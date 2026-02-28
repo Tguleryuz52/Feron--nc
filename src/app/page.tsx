@@ -1,11 +1,16 @@
-import HeroSplash from "@/components/HeroSplash";
+import Hero from "@/components/sections/Hero";
 import Footer from "@/components/Footer";
+import StackedSection from "@/components/StackedSection";
 
 export default function Home() {
   return (
-    <>
-      <HeroSplash />
-      <Footer />
-    </>
+    <main className="bg-black">
+      <StackedSection>
+        <Hero />
+      </StackedSection>
+      <StackedSection isSticky={false}>
+        <Footer />
+      </StackedSection>
+    </main>
   );
 }

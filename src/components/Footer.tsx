@@ -22,100 +22,126 @@ const OTHER = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white">
-      {/* Top Section */}
-      <div className="flex flex-col md:flex-row justify-between px-6 pt-12 pb-16 max-w-[1800px] mx-auto gap-12">
-        {/* Newsletter */}
+    <footer className="bg-[#111111] text-white font-sans">
+
+      {/* ═══════════════════════════════════════════
+          TOP ROW — Newsletter (left) + Link Columns (right)
+      ═══════════════════════════════════════════ */}
+      <div
+        className="flex justify-between items-start border-t border-zinc-900"
+        style={{ padding: "48px 48px 56px 48px" }}
+      >
+
+        {/* ── Newsletter (Left Side) ── */}
         <div className="flex flex-col gap-6">
-          <h3 className="text-[12px] font-medium uppercase tracking-wider">
+          <span className="text-[14px] font-bold uppercase tracking-[0.15em] text-white">
             Subscribe to our newsletter
-          </h3>
-          <div className="flex items-center gap-3">
+          </span>
+          <div className="flex items-end gap-4">
             <input
               type="email"
               placeholder="Your email"
-              className="bg-transparent border-b border-white/30 pb-2 text-[14px] text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors w-[200px]"
+              className="bg-transparent border-b border-white/10 pb-2 text-[14px] text-white placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-colors duration-500 w-[240px]"
             />
-            <button className="bg-white/10 hover:bg-white/20 text-white text-[12px] font-medium uppercase tracking-wider px-5 py-2 transition-colors">
-              Join
+            <button className="bg-white text-black text-[15px] font-bold uppercase tracking-wider px-6 py-2.5 hover:bg-white/85 transition-all duration-300 cursor-pointer select-none">
+              JOIN
             </button>
           </div>
         </div>
 
-        {/* Link Columns */}
-        <div className="flex gap-16 md:gap-24">
+        {/* ── Link Columns (Right Side) ── */}
+        <div className="flex gap-24">
+
           {/* Customer Care */}
-          <div className="flex flex-col gap-4">
-            <h4 className="text-[11px] font-normal uppercase tracking-wider text-white/50">
+          <div className="flex flex-col">
+            <h3 className="text-[10px] font-normal uppercase tracking-[0.45em] text-zinc-500 mb-6">
               (Customer Care)
-            </h4>
-            {CUSTOMER_CARE.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[14px] font-normal text-white hover:opacity-70 transition-opacity"
-              >
-                {link.label}
-              </Link>
-            ))}
+            </h3>
+            <div className="flex flex-col gap-3">
+              {CUSTOMER_CARE.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[14px] font-medium text-white hover:opacity-50 transition-opacity duration-500 relative group w-fit"
+                  style={{ lineHeight: "1.5" }}
+                >
+                  {link.label}
+                  <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-white/60 transition-all duration-500 group-hover:w-full" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Navigate */}
-          <div className="flex flex-col gap-4">
-            <h4 className="text-[11px] font-normal uppercase tracking-wider text-white/50">
+          <div className="flex flex-col">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.35em] text-zinc-400 mb-7">
               (Navigate)
-            </h4>
-            {NAVIGATE.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[14px] font-normal text-white hover:opacity-70 transition-opacity"
-              >
-                {link.label}
-              </Link>
-            ))}
+            </h3>
+            <div className="flex flex-col gap-3">
+              {NAVIGATE.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[14px] font-medium text-white hover:opacity-50 transition-opacity duration-500 relative group w-fit"
+                  style={{ lineHeight: "1.5" }}
+                >
+                  {link.label}
+                  <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-white/60 transition-all duration-500 group-hover:w-full" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Other */}
-          <div className="flex flex-col gap-4">
-            <h4 className="text-[11px] font-normal uppercase tracking-wider text-white/50">
+          <div className="flex flex-col">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.35em] text-zinc-400 mb-7">
               (Other)
-            </h4>
-            {OTHER.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[14px] font-normal text-white hover:opacity-70 transition-opacity"
-              >
-                {link.label}
-              </Link>
-            ))}
+            </h3>
+            <div className="flex flex-col gap-3">
+              {OTHER.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[14px] font-medium text-white hover:opacity-50 transition-opacity duration-500 relative group w-fit"
+                  style={{ lineHeight: "1.5" }}
+                >
+                  {link.label}
+                  <span className="absolute left-0 -bottom-0.5 w-0 h-px bg-white/60 transition-all duration-500 group-hover:w-full" />
+                </Link>
+              ))}
+            </div>
           </div>
+
         </div>
       </div>
 
-      {/* Bottom Section: Giant Logo + Credits */}
-      <div className="relative px-6 pb-8 max-w-[1800px] mx-auto">
-        {/* Giant "feron." text */}
-        <div className="select-none">
-          <span
-            className="text-white font-serif font-bold leading-none block"
-            style={{ fontSize: "clamp(100px, 15vw, 280px)" }}
-          >
-            feron.
-          </span>
-        </div>
+      {/* ═══════════════════════════════════════════
+          BOTTOM — Giant Logo + Credits
+      ═══════════════════════════════════════════ */}
+      <div className="relative overflow-hidden" style={{ padding: "16px 48px 32px 48px" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hero/footer-logo.svg"
+          alt="Feron"
+          className="select-none"
+          draggable={false}
+          style={{
+            width: "clamp(200px, 28vw, 550px)",
+            height: "auto",
+          }}
+        />
 
-        {/* Credits */}
-        <div className="flex justify-end items-center gap-4 mt-4">
-          <span className="text-[11px] font-normal uppercase tracking-wider text-white/50">
+        {/* Credits — bottom right */}
+        <div className="absolute bottom-10 right-12 flex items-center gap-6">
+          <span className="text-[10px] font-normal uppercase tracking-[0.15em] text-zinc-600">
             By Feron Supply
           </span>
-          <span className="text-[11px] font-normal uppercase tracking-wider text-white/50">
+          <span className="text-[10px] font-normal uppercase tracking-[0.15em] text-zinc-600">
             ©2025
           </span>
         </div>
       </div>
+
     </footer>
   );
 }

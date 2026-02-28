@@ -19,18 +19,20 @@ const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.06,
-      delayChildren: 0.4,
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
     },
   },
 };
 
+const easeCubic = [0.23, 1, 0.32, 1] as const;
+
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 12 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const },
+    transition: { duration: 0.8, ease: easeCubic },
   },
 };
 
@@ -47,24 +49,24 @@ export default function HeroSplash() {
         quality={90}
       />
 
-      {/* Subtle dark overlay - matte feel like Fossil */}
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Exact dark overlay matching Fossil (soft charcoal/black vignette) */}
+      <div className="absolute inset-0 bg-black/30" style={{ backdropFilter: "brightness(0.9)" }} />
 
       {/* Center Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-6">
-        {/* Text Logo - Serif "feron™" matching Fossil's "fossil™" style */}
+        {/* Logo - EXACT styling: 26px, -0.02em tracking, 24px bottom margin */}
         <motion.div
-          initial={{ opacity: 0, y: -8 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" as const }}
-          className="mb-8"
+          transition={{ duration: 0.8, ease: easeCubic }}
+          className="mb-[24px]"
         >
-          <span className="text-white font-serif text-[24px] italic tracking-[0.01em] font-normal">
-            feron.<sup className="text-[9px] not-italic ml-0.5 align-super">™</sup>
+          <span className="text-white font-serif text-[26px] italic tracking-[-0.02em] font-normal select-none">
+            feron.<sup className="text-[10px] not-italic align-super">™</sup>
           </span>
         </motion.div>
 
-        {/* Navigation Links - matching Fossil's refined, light style */}
+        {/* Navigation Links - EXACT styling: 14px, 500 weight, -0.02em tracking, 1.4 line-height */}
         <motion.nav
           variants={containerVariants}
           initial="hidden"
@@ -75,7 +77,7 @@ export default function HeroSplash() {
             <motion.div key={link.href} variants={itemVariants}>
               <Link
                 href={link.href}
-                className="text-white text-[15px] font-light tracking-[0.08em] hover:opacity-60 transition-opacity duration-300"
+                className="text-white/80 text-[14px] font-medium tracking-[-0.02em] leading-[1.4] hover:text-white transition-opacity duration-400 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
               >
                 {link.label}
               </Link>
@@ -85,28 +87,28 @@ export default function HeroSplash() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 flex items-end justify-between px-5 pb-5">
+      <div className="absolute bottom-0 left-0 right-0 z-10 flex items-end justify-between px-6 pb-6">
         {/* Left: Music Widget */}
         <motion.div
-          initial={{ opacity: 0, x: -16 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.9, ease: "easeOut" as const }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: easeCubic }}
         >
           <MusicWidget />
         </motion.div>
 
         {/* Center: Clock */}
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.1, ease: "easeOut" as const }}
-          className="absolute left-1/2 -translate-x-1/2 bottom-5"
+          transition={{ duration: 0.8, delay: 0.7, ease: easeCubic }}
+          className="absolute left-1/2 -translate-x-1/2 bottom-6"
         >
           <ClockWidget />
         </motion.div>
 
         {/* Right: spacer to keep layout balanced */}
-        <div className="w-[260px]" />
+        <div className="w-[300px]" />
       </div>
     </section>
   );

@@ -24,9 +24,9 @@ export default function ClockWidget() {
   }, []);
 
   return (
-    <div className="text-white/60 text-[11px] font-light uppercase tracking-[0.2em]">
-      <span className="text-white/40">New York:</span>{" "}
-      <span className="font-normal tabular-nums tracking-[0.15em]">{time}</span>
+    <div className="text-white/80 text-[11px] font-semibold uppercase tracking-[0.05em] select-none">
+      <span className="text-white/50">New York:</span>{" "}
+      <span className="tabular-nums">{time}</span>
     </div>
   );
 }
